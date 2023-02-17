@@ -4,7 +4,7 @@
 #$ -l rmem=8G # size of memory requested
 #$ -o ../Output/COM6012_Lab1.txt  # This is where your output and errors are logged
 #$ -j y # normal and error outputs into a single file (the file above)
-#$ -M youremail@shef.ac.uk # notify you by email, remove this line if you don't want to be notified
+#$ -M x@shef.ac.uk # notify you by email, remove this line if you don't want to be notified
 #$ -m ea # email you when it finished or aborted
 #$ -cwd # run job from current directory
 
@@ -14,4 +14,4 @@ module load apps/python/conda
 
 source activate myspark
 
-spark-submit ../Code/LogMiningBig.py  # .. is a relative path, meaning one level up
+spark-submit ../Code/LogMiningBig.py
