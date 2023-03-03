@@ -10,7 +10,7 @@ spark = SparkSession.builder \
 sc = spark.sparkContext
 sc.setLogLevel("WARN")  # This can only affect the log level after it is executed.
 
-rawdata = spark.read.csv('../Data/spambase.data')
+rawdata = spark.read.csv('./Data/spambase.data')
 rawdata.cache()
 ncolumns = len(rawdata.columns)
 spam_names = [spam_names.rstrip('\n') for spam_names in open('./Data/spambase.data.names')]
@@ -40,11 +40,11 @@ for i in range(ncolumns):
 
 (trainingDatag, testDatag) = rawdata.randomSplit([0.7, 0.3], 42)
 
-trainingDatag.write.mode("overwrite").parquet('../Data/spamdata_training.parquet')
-testDatag.write.mode("overwrite").parquet('../Data/spamdata_test.parquet')
+trainingDatag.write.mode("overwrite").parquet('./Data/spamdata_training.parquet')
+testDatag.write.mode("overwrite").parquet('./Data/spamdata_test.parquet')
 
-trainingData = spark.read.parquet('../Data/spamdata_training.parquet')
-testData = spark.read.parquet('../Data/spamdata_test.parquet')
+trainingData = spark.read.parquet('./Data/spamdata_training.parquet')
+testData = spark.read.parquet('./Data/spamdata_test.parquet')
 
 from pyspark.ml.feature import VectorAssembler
 vecAssembler = VectorAssembler(inputCols = spam_names[0:ncolumns-1], outputCol = 'features')
