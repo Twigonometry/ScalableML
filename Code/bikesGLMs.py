@@ -56,4 +56,8 @@ evaluator = RegressionEvaluator\
 rmse = evaluator.evaluate(predictions)
 print("RMSE = %g " % rmse)
 
+from pyspark.ml.linalg import Vectors
+ohe = OneHotEncoder()
+ohe.setInputCols(["
+
 spark.stop()
